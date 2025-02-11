@@ -8,14 +8,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit {{ $category->title }} Category</h1>
+                        <h1 class="m-0">Edit {{ $category->name }} Category</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Categories</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.category.show', $category->id) }}">{{ $category->title }} Category</a></li>
-                            <li class="breadcrumb-item active">Edit {{ $category->title }} Category</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.category.show', $category->id) }}">{{ $category->name }} Category</a></li>
+                            <li class="breadcrumb-item active">Edit {{ $category->name }} Category</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -31,10 +31,10 @@
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Category title" value="{{ $category->title }}">
+                            <label for="name">Title</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Category name" value="{{ $category->name }}">
                         </div>
-                        @error('title')
+                        @error('name')
                             <div class="text-danger pb-3">{{ $message }}</div>
                         @enderror
                         <input type="submit" class="btn btn-primary" value="Save">

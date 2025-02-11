@@ -43,7 +43,8 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <form action="{{ route('logout') }}" method="post">
+                    <form action="#" method="post">
+                        <!-- // route('logout'); -->
                         @csrf
                         <input type="submit" class="btn btn-outline-primary" value="Log Out">
                     </form>

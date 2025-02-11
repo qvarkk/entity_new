@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6 d-flex align-items-center">
-                        <h1 class="m-0 mr-2">{{ $category->title }} Category</h1>
+                        <h1 class="m-0 mr-2">{{ $category->name }} Category</h1>
                         <a class="ml-2 fas fa-pen text-success" href="{{ route('admin.category.edit', $category->id) }}"></a>
                         <form class="ml-2 d-inline" action="{{ route('admin.category.destroy', $category->id) }}" method="post">
                             @csrf
@@ -20,9 +20,9 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Categories</a></li>
-                            <li class="breadcrumb-item active">{{ $category->title }} Category</li>
+                            <li class="breadcrumb-item active">{{ $category->name }} Category</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -45,7 +45,7 @@
                                     </tr>
                                     <tr>
                                         <td class="text-bold">Title</td>
-                                        <td>{{ $category->title }}</td>
+                                        <td>{{ $category->name }}</td>
                                     </tr>
                                     </tbody>
                                 </table>

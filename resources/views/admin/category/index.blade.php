@@ -12,7 +12,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
                             <li class="breadcrumb-item active">Categories</li>
                         </ol>
                     </div><!-- /.col -->
@@ -45,7 +45,7 @@
                                     @foreach($categories as $category)
                                         <tr>
                                             <td>{{ $category->id }}</td>
-                                            <td>{{ $category->title }}</td>
+                                            <td>{{ $category->name }}</td>
                                             <td>
                                                 <a class="fas fa-eye"
                                                    href="{{ route('admin.category.show', $category->id) }}"></a>
