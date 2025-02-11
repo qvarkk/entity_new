@@ -13,7 +13,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: _docker/app/Dockerfile
+      dockerfile: ./_docker/app/Dockerfile
     volumes:
       - ./:/var/www/
     depends_on:

@@ -5,16 +5,18 @@ RUN apt-get update && apt-get install -y \
       libpq-dev \
       libpng-dev \
       libzip-dev \
+      libxml2-dev \
       zip unzip \
-      git && \
-      docker-php-ext-install pdo_pgsql && \
-      docker-php-ext-install bcmath && \
-      docker-php-ext-install gd && \
-      docker-php-ext-install zip && \
-      apt-get clean && \
-      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+      git nodejs \
+      npm
 
-COPY ./docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN docker-php-ext-install pdo_pgsql bcmath gd zip
+RUN docker-php-ext-install dom
+RUN docker-php-ext-install xml
+
+COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
 
 # Install composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
