@@ -12,7 +12,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.tag.index') }}">Tags</a>
                             </li>
                             <li class="breadcrumb-item active">Create Tag</li>
@@ -30,10 +30,10 @@
                     <form action="{{ route('admin.tag.store') }}" method="post" class="col-4">
                         @csrf
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Tag title" value="{{ old('title') }}">
+                            <label for="name">Title</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Tag name" value="{{ old('name') }}">
                         </div>
-                        @error('title')
+                        @error('name')
                             <div class="text-danger pb-3">{{ $message }}</div>
                         @enderror
                         <input type="submit" class="btn btn-primary" value="Add &plus;">

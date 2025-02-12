@@ -12,10 +12,10 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.tag.index') }}">Tags</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('admin.tag.show', $tag->id) }}">{{ $tag->title }} Tag</a></li>
-                            <li class="breadcrumb-item active">Edit {{ $tag->title }} Tag</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.tag.show', $tag->id) }}">{{ $tag->name }} Tag</a></li>
+                            <li class="breadcrumb-item active">Edit {{ $tag->name }} Tag</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -31,10 +31,10 @@
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Tag title" value="{{ $tag->title }}">
+                            <label for="name">Title</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Tag name" value="{{ $tag->name }}">
                         </div>
-                        @error('title')
+                        @error('name')
                             <div class="text-danger pb-3">{{ $message }}</div>
                         @enderror
                         <input type="submit" class="btn btn-primary" value="Save">
