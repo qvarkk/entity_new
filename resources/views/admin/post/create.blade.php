@@ -12,7 +12,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Posts</a>
                             </li>
                             <li class="breadcrumb-item active">Create Post</li>
@@ -64,7 +64,7 @@
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}"
                                     {{ $category->id == old('category_id') ? ' selected' : '' }}
-                                    >{{ $category->title }}</option>
+                                    >{{ $category->name }}</option>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -77,7 +77,7 @@
                                 @foreach($tags as $tag)
                                     <option value="{{ $tag->id }}"
                                     {{ ( is_array( old('tag_ids') ) && in_array( $tag->id, old('tag_ids')) ) ? ' selected' : '' }}
-                                    >{{ $tag->title }}</option>
+                                    >{{ $tag->name }}</option>
                                 @endforeach
                             </select>
                         </div>
