@@ -9,6 +9,6 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return 1111;
+        return view('post.index');
     }
 }
