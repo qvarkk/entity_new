@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
-
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -22,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="shortcut icon" href="{{ asset('dist/img/favicon.ico') }}" type="image/x-icon">
+    <title>Entity | Dashboard</title>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -43,11 +43,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <form action="#" method="post">
-                        <!-- // route('logout'); -->
-                        @csrf
-                        <input type="submit" class="btn btn-outline-primary" value="Log Out">
-                    </form>
+                    <a href="{{ route('auth.logout') }}" class="btn btn-outline-primary">Log Out</a>
                 </li>
             </ul>
         </div>

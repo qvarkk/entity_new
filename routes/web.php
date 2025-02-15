@@ -11,6 +11,7 @@ Route::namespace('App\Http\Controllers\Main')->group(function () {
 
 Route::namespace('App\Http\Controllers\Post')->prefix('posts')->group(function () {
     Route::get('/', IndexController::class)->name('post.index');
+    Route::get('/{post}', ShowController::class)->name('post.show');
 });
 
 Route::namespace('App\Http\Controllers\Auth')->group(function () {
