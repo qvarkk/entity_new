@@ -12,7 +12,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="row">
+        <div class="row d-flex" style="justify-content: center">
             {{ $recent_posts->links() }}
         </div>
     </div>
