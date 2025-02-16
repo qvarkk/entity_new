@@ -13,17 +13,16 @@ class IndexController extends Controller
         $recent_posts = Post::orderBy('created_at', 'desc')->paginate(6);
         $posts_count = $recent_posts->total();
 
-        if ($posts_count >= 4) {
-            $random_posts = Post::get()->random(4);
-            $trending_posts = Post::get()->random(4);
-        }
-        else {
-            $random_posts = Post::get()->random($posts_count);
-            $trending_posts = Post::get()->random($posts_count);
-        }
+        $trending_posts_max = 4;
+        $random_posts_max = 8;
 
-         // $randomPosts = Post::get()->random(4);
-         // $mostLikedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'desc')->take(4)->get();
+        $trending_posts_count = min($posts_count, $trending_posts_max);
+        $random_posts_count = min($posts_count, $random_posts_max);
+
+        $trending_posts = Post::orderBy('liked_users_count', 'desc')->limit($trending_posts_count)->get();
+        $random_posts = Post::get()->random($random_posts_count);
+
+
         return view('post.index', compact('recent_posts', 'random_posts', 'trending_posts'));
     }
 }

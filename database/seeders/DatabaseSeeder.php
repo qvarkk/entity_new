@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'role' => User::ROLE_ADMIN,
         ]);
 
-        User::factory(10)->create();
+        $users = User::factory(10)->create();
 
         Category::factory(10)->create();
         $tags = Tag::factory(25)->create();
@@ -32,7 +32,10 @@ class DatabaseSeeder extends Seeder
 
         foreach ($posts as $post) {
             $random_tags = $tags->random(rand(1, 5));
+            $random_users = $users->random(rand(1, 5));
+
             $post->tags()->sync($random_tags);
+            $post->liked_users()->sync($random_users);
         }
     }
 }

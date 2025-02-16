@@ -23,14 +23,21 @@
             <span class="metadata-item">•</span>
             <span class="metadata-item">0 Comments</span>
             <span class="metadata-item">•</span>
-            <span class="metadata-item">0 Likes</span>
+            <span class="metadata-item">{{ $post->liked_users_count }} Likes</span>
             <span class="metadata-item">•</span>
         </p>
         <form action="#" class="mb-0 ml-1" method="post">
             @csrf
             <button type="submit" class="border-0 bg-transparent shadow-none p-0" style="outline: none;">
                 @auth()
-                    <i class="far fa-heart" style="color: #e34a40; font-size: 1.25rem;"></i>
+                    <form method="post" action="{{ route('post.like.toggle', $post->id) }}">
+                        @csrf
+                        @if(auth()->user()->liked_posts->contains($post->id))
+                            <i class="fas fa-heart" style="color: #e34a40; font-size: 1.25rem;"></i>
+                        @else
+                            <i class="far fa-heart" style="color: #e34a40; font-size: 1.25rem;"></i>
+                        @endif
+                    </form>
                 @endauth
             </button>
         </form>

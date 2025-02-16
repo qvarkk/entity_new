@@ -13,6 +13,8 @@ class Post extends Model
     protected $table = 'posts';
     protected $guarded = false;
 
+    protected $withCount = ['liked_users'];
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -21,5 +23,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
+    }
+
+    public function liked_users()
+    {
+        return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id');
     }
 }

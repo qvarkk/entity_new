@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-8">
                 <section>
-                    <h3 class="my-3">Trending Now</h3>
+                    <h3 class="my-3">Popular Posts</h3>
                     <div class="row">
                         @foreach($trending_posts as $post)
                             <div class="col-md-6 mb-4">
