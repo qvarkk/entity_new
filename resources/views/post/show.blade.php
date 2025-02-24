@@ -55,6 +55,13 @@
 
     <section class="my-5">
         <div class="row justify-content-center">
+            <small class="text-gray">
+                Tags:
+
+
+            </small>
+        </div>
+        <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
                 <article class="post-content">
                     {!! $post->content !!}

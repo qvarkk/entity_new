@@ -14,6 +14,7 @@ Route::namespace('App\Http\Controllers\Post')->prefix('posts')->group(function (
     Route::get('/{post}', ShowController::class)->name('post.show');
 
     Route::post('/{post}', Like\ToggleController::class)->name('post.like.toggle');
+    Route::post('/{post}/comment', Comment\StoreController::class)->name('post.comment.store');
 });
 
 Route::namespace('App\Http\Controllers\Auth')->group(function () {
@@ -21,13 +22,13 @@ Route::namespace('App\Http\Controllers\Auth')->group(function () {
         Route::get('/login', LoginController::class)->name('auth.login');
         Route::get('/register', RegisterController::class)->name('auth.register');
     });
-
-
 });
 
+// TODO: ???
 Route::post('/auth/login', [\App\Http\Controllers\Auth\AuthController::class, 'authenticate'])->name('auth.authenticate');
 Route::post('/auth/register', [\App\Http\Controllers\Auth\AuthController::class, 'register'])->name('auth.create');
 Route::get('/auth/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('auth.logout');
+
 
 Route::namespace('App\Http\Controllers\Admin')
     ->middleware([AuthMiddleware::class, AdminMiddleware::class])
