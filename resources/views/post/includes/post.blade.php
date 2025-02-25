@@ -1,7 +1,6 @@
 <div class="card h-100">
-    <img src="{{ $post->preview_image
-                        ? asset('storage/' . $post->preview_image)
-                        : 'public/dist/img/no-image-placeholder.png' }}"
+    <img src="{{ asset('storage/' . $post->preview_image) }}"
+         onerror="this.onerror=null; this.src='{{ asset('dist/img/no-image-placeholder.png') }}'"
          class="rounded-top img-fluid d-block"
          alt="Post {{ $post->title }} image"
          style="height: 360px; object-fit: cover">

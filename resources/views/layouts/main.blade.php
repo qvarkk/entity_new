@@ -63,7 +63,7 @@
         </div>
     </nav>
 </header>
-<main class="container pt-5 h-100 flex-grow-1">
+<main class="container pt-5 flex-grow-1">
     @yield('content')
 </main>
 <footer class="py-3 bg-dark">
