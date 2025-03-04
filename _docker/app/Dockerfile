@@ -26,4 +26,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 
 WORKDIR /var/www
 
+RUN composer require laravel/telescope
+
 RUN php artisan migrage:fresh --seed

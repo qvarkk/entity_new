@@ -17,6 +17,10 @@ Route::namespace('App\Http\Controllers\Post')->prefix('posts')->group(function (
     Route::post('/{post}/comment', Comment\StoreController::class)->name('post.comment.store');
 });
 
+Route::namespace('App\Http\Controllers\Profile')->prefix('profile')->group(function () {
+    Route::get('/{user}', ShowController::class)->name('profile.show');
+});
+
 Route::namespace('App\Http\Controllers\Auth')->group(function () {
     Route::middleware([GuestMiddleware::class])->group(function () {
         Route::get('/login', LoginController::class)->name('auth.login');

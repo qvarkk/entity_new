@@ -8,6 +8,21 @@
     }
 </style>
 
+<script>
+    function textCounter(textArea, counterId = 'counter', limit = 4096)
+    {
+        let counter = document.querySelector(`#${counterId}`);
+        counter.innerHTML = `${textArea.value.length}/${limit}`;
+
+        if ( textArea.value.length >= limit ) {
+            counter.classList.add('text-danger');
+            return false;
+        } else {
+            counter.classList.remove('text-danger');
+        }
+    }
+</script>
+
 @section('content')
     <div class="d-flex justify-content-center">
         <h1 class="display-4 font-weight-bold text-center">{{ $post->title }}</h1>
@@ -76,38 +91,19 @@
 
     @if($post->comments->count() > 0)
         <section class="comment-list mb-5">
-            <h2 class="section-title mb-4">Comments</h2>
+            <h2 class="section-title mb-4">Comments ({{ $post->comments->count() }})</h2>
             @foreach($post->comments as $comment)
-                <div class="card-comment p-3 my-4" style="border: 2px solid #fff0e8; border-radius: 25px;">
-                    <div class="comment-text">
-                        <div class="username">
-                            <span style="font-weight: bold; font-size: 1.25rem">
-                                {{ $comment->user->name }}
-                            </span>
-                            <span class="text-muted float-right">
-                                {{ $comment->created_at->diffForHumans() }}
-                            </span>
-                        </div>
-                        <div class="p-3">
-                            {{ $comment->message }}
-                        </div>
-                        @auth()
-                            @if($comment->user->id == auth()->user()->id)
-                                <div class="px-2 d-flex justify-content-end align-items-center">
-                                    <a class="ml-2 fas fa-pen text-warning" href="#"></a>
-                                    <form class="ml-2 m-0" action="#" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="border-0 bg-transparent" type="submit">
-                                            <a class="fas fa-trash text-warning" role="button"></a>
-                                        </button>
-                                    </form>
-                                </div>
-                            @endif
-                        @endauth
-                    </div>
-                </div>
+                @include('post.includes.comment', $comment)
             @endforeach
+        </section>
+    @else
+        <section class="comment-list mb-5">
+            <h2 class="section-title mb-4">Comments ({{ $post->comments->count() }})</h2>
+            <div class="p-3 my-4">
+                <span style="font-weight: 500; font-size: 1.25rem">
+                    No comments yet. You can leave one below
+                </span>
+            </div>
         </section>
     @endif
 
@@ -119,9 +115,11 @@
                 <div class="row">
                     <div class="form-group col-12">
                         <label for="message" class="sr-only">Comment</label>
-                        <textarea name="message" id="message" class="form-control"
-                                  style="border-radius: 25px" placeholder="Message"
-                                  rows="5" maxlength="4096"></textarea>
+                        <textarea oninput="textCounter(this);"
+                                    name="message" id="message" class="form-control"
+                                    style="border-radius: 25px" placeholder="Message"
+                                    rows="5" maxlength="4096"></textarea>
+                        <span class="float-right" id="counter">0/4096</span>
                     </div>
                 </div>
                 <div class="row">
