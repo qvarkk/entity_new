@@ -49,7 +49,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}">Profile</a>
                             @if(Auth::user()->role == App\Models\User::ROLE_ADMIN)
                                 <a class="dropdown-item" href="{{ route('admin.main.index') }}">Admin Panel</a>
                             @endif
