@@ -36,9 +36,9 @@
             <span class="metadata-item">•</span>
             <span class="metadata-item">{{ $post->category->name }}</span>
             <span class="metadata-item">•</span>
-            <span class="metadata-item">0 Comments</span>
+            <span class="metadata-item">{{ $post->comments_count }} {{ $post->comments_count > 1 ? 'Comments' : 'Comment' }}</span>
             <span class="metadata-item">•</span>
-            <span class="metadata-item">{{ $post->liked_users_count }} Likes</span>
+            <span class="metadata-item">{{ $post->liked_users_count }} {{ $post->liked_users_count > 1 ? 'Likes' : 'Like' }}</span>
             <span class="metadata-item">•</span>
         </p>
         @auth()
