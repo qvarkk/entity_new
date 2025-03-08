@@ -69,6 +69,9 @@
                         <!-- /.card -->
                     </div>
                 </div>
+                <div class="row mx-auto">
+                    {{ $categories->links('pagination.admin') }}
+                </div>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

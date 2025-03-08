@@ -11,9 +11,15 @@ class IndexController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        $categories = Category::all();
+        $per_page = $request->input('perpage');
+
+        if (is_null($per_page)) {
+            $per_page = 10;
+        }
+
+        $categories = Category::paginate($per_page)->withQueryString();
 
         return view('admin.category.index', compact('categories'));
     }

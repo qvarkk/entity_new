@@ -73,6 +73,9 @@
                         <!-- /.card -->
                     </div>
                 </div>
+                <div class="row mx-auto">
+                    {{ $users->links('pagination.admin') }}
+                </div>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

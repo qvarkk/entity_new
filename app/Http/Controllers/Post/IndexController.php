@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Request $request)
     {
         $recent_posts = Post::orderBy('created_at', 'desc')->paginate(6);
         $posts_count = $recent_posts->total();
