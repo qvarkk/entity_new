@@ -14,7 +14,13 @@ Route::namespace('App\Http\Controllers\Post')->prefix('posts')->group(function (
     Route::get('/{post}', ShowController::class)->name('post.show');
 
     Route::post('/{post}', Like\ToggleController::class)->name('post.like.toggle');
-    Route::post('/{post}/comment', Comment\StoreController::class)->name('post.comment.store');
+
+    Route::namespace('Comment')->middleware(AuthMiddleware::class)->group(function () {
+        Route::post('/comment/{post}', StoreController::class)->name('post.comment.store');
+        Route::get('/comment/{comment}/edit', EditController::class)->name('post.comment.edit');
+        Route::patch('/comment/{comment}', UpdateController::class)->name('post.comment.update');
+        Route::delete('/comment/{comment}', DestroyController::class)->name('post.comment.destroy');
+    });
 });
 
 Route::namespace('App\Http\Controllers\Profile')->prefix('profile')->group(function () {

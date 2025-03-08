@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Models\Comment;
 use App\Models\User;
-use Illuminate\Auth\Access\Gate;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

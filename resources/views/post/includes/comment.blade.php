@@ -15,18 +15,21 @@
             {{ $comment->message }}
         </div>
         @auth()
-            @if($comment->user->id == auth()->user()->id)
-                <div class="px-2 d-flex justify-content-end align-items-center">
-                    <a class="ml-2 fas fa-pen text-warning" href="#"></a>
-                    <form class="ml-2 m-0" action="#" method="post">
+            <div class="px-2 d-flex justify-content-end align-items-center">
+                @if($comment->user->id == auth()->user()->id)
+                    <a class="ml-2 fas fa-pen text-warning" href="{{ route('post.comment.edit', $comment->id) }}"></a>
+                @endif
+
+                @if(auth()->user()->role === \App\Models\User::ROLE_ADMIN)
+                    <form class="ml-2 m-0" action="{{ route('post.comment.destroy', $comment->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="border-0 bg-transparent" type="submit">
                             <a class="fas fa-trash text-warning" role="button"></a>
                         </button>
                     </form>
-                </div>
-            @endif
+                @endif
+            </div>
         @endauth
     </div>
 </div>
