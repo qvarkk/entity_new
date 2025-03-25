@@ -20,7 +20,7 @@
                     <a class="ml-2 fas fa-pen text-warning" href="{{ route('post.comment.edit', $comment->id) }}"></a>
                 @endif
 
-                @if(auth()->user()->role === \App\Models\User::ROLE_ADMIN)
+                @if($comment->user->id == auth()->user()->id || auth()->user()->role === \App\Models\User::ROLE_ADMIN)
                     <form class="ml-2 m-0" action="{{ route('post.comment.destroy', $comment->id) }}" method="post">
                         @csrf
                         @method('DELETE')
