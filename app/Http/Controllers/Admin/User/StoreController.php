@@ -29,6 +29,6 @@ class StoreController extends Controller
 
         $user = User::firstOrCreate(['email' => $data['email']], $data);
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('notification', 'User successfully created.');
     }
 }

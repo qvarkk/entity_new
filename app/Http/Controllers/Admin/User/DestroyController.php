@@ -13,6 +13,6 @@ class DestroyController extends Controller
     public function __invoke(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('notification', 'User successfully deleted.');
     }
 }

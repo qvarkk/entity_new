@@ -14,6 +14,6 @@ class DestroyController extends Controller
     public function __invoke(Category $category)
     {
         $category->delete();
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index')->with('notification', 'Category successfully deleted.');
     }
 }

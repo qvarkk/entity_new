@@ -12,6 +12,6 @@ class DestroyController extends BaseController
     public function __invoke(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.post.index');
+        return redirect()->route('admin.post.index')->with('notification', 'Post successfully deleted.');
     }
 }
