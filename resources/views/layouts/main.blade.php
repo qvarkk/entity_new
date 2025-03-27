@@ -9,16 +9,14 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- jQuery -->
+    <!-- jQuery for bootstrap to work -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}" defer></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}" defer></script>
-    <!-- Bootstrap 4 -->
+    <!-- Bootstrap 4 JS -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+    <!-- Bootstrap 4 themed styles -->
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('dist/img/favicon.ico') }}" type="image/x-icon">
     <title>Entity | @yield('title')</title>
 </head>
