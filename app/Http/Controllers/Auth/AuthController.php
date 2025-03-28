@@ -19,7 +19,7 @@ class AuthController extends Controller
         if (Auth::attempt($data))
         {
             $request->session()->regenerate();
-            return redirect()->intended();
+            return redirect()->intended()->with('notification', 'Logged in successfully!');
         }
 
         return back()->withErrors([
@@ -37,7 +37,7 @@ class AuthController extends Controller
         Auth::login($user);
         $request->session()->regenerate();
 
-        return redirect()->route('main.index');
+        return redirect()->route('main.index')->with('notification', 'Registered successfully!');
     }
 
     public function logout(Request $request)
@@ -46,6 +46,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return back();
+        return back()->with('notification', 'Logged out successfully!');
     }
 }

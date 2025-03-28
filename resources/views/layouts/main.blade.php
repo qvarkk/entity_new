@@ -67,5 +67,8 @@
 <footer class="py-3 bg-dark">
     <p class="text-center text-white-50 text-muted">© 2025 | Entity</p>
 </footer>
+
+@include('includes.notification')
+
 </body>
 </html>
